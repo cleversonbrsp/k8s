@@ -1,4 +1,4 @@
-# k8s
+# BookStack
 
 BookStack é uma plataforma de gerenciamento de documentação e wiki de código aberto. Projetado para ser uma ferramenta simples e fácil de usar, o BookStack permite que equipes organizem, compartilhem e colaborem na criação de documentação para projetos, procedimentos, manuais, guias e muito mais.
 
