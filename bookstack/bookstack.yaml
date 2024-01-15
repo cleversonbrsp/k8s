@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookstack
+  labels:
+    app: bookstack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bookstack
+  template:
+    metadata:
+      labels:
+        app: bookstack
+    spec:
+      containers:
+      - name: bookstack
+        image: linuxserver/bookstack
+        ports:
+        - containerPort: 80
+        env:
+        - name: APP_URL
+          value: "https://seusite.com.br" #seu site
+        - name: PUID
+          value: "1001"
+        - name: PGID
+          value: "986"
+        - name: DB_HOST
+          value: "bookstackdb"
+        - name: DB_USER
+          value: "bookstack"
+        - name: DB_PASS
+          value: "bookstack"
+        - name: DB_DATABASE
+          value: "bookstack"
+        - name: MAIL_DRIVER
+          value: smtp
+        - name: MAIL_FROM_NAME
+          value: noreply
+        - name: MAIL_FROM
+          value: noreply@seusite.com.br
+        - name: MAIL_HOST
+          value: smtp.office365.com
+        - name: MAIL_PORT
+          value: '587'
+        - name: MAIL_USERNAME
+          value: noreply@seusite.com.br
+        - name: MAIL_PASSWORD
+          value: sua_senha #melhore isso usando um external secrets por exemplo
+        - name: MAIL_ENCRYPTION
+          value: TLS
+        volumeMounts:
+        - mountPath: "/config"
+          name: bokstackvolume
+      volumes:
+      - name: bokstackvolume
+        persistentVolumeClaim:
+          claimName: bookstackpvc
