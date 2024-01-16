@@ -47,7 +47,7 @@ spec:
         - name: MAIL_USERNAME
           value: noreply@seusite.com.br
         - name: MAIL_PASSWORD
-          value: sua_senha #melhore isso usando um external secrets por exemplo
+          value: sua_senha # improve this using an external secret for example
         - name: MAIL_ENCRYPTION
           value: TLS
         volumeMounts:
