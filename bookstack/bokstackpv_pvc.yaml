@@ -6,7 +6,7 @@ metadata:
     type: local
 spec:
   capacity:
-    storage: 1Gi #ajuste conforme sua necessidade
+    storage: 1Gi #adjust according to your needs
   accessModes:
     - ReadWriteOnce
   hostPath:
@@ -21,4 +21,4 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi #ajuste conforme sua necessidade
+      storage: 1Gi #adjust according to your needs

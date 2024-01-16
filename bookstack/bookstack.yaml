@@ -21,19 +21,19 @@ spec:
         - containerPort: 80
         env:
         - name: APP_URL
-          value: "https://seusite.com.br" #seu site
+          value: "https://seusite.com.br" #your website
         - name: PUID
           value: "1001"
         - name: PGID
           value: "986"
         - name: DB_HOST
-          value: "bookstackdb"
+          value: "yourdbhostname"
         - name: DB_USER
-          value: "bookstack"
+          value: "yourdbusername"
         - name: DB_PASS
-          value: "bookstack"
+          value: "yourdbupass"
         - name: DB_DATABASE
-          value: "bookstack"
+          value: "yourdbdatabasename"
         - name: MAIL_DRIVER
           value: smtp
         - name: MAIL_FROM_NAME
