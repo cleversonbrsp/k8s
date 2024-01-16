@@ -21,7 +21,7 @@ spec:
         - containerPort: 80
         env:
         - name: APP_URL
-          value: "https://seusite.com.br" #your website
+          value: "https://website.com.br" #your website
         - name: PUID
           value: "1001"
         - name: PGID
@@ -39,13 +39,13 @@ spec:
         - name: MAIL_FROM_NAME
           value: noreply
         - name: MAIL_FROM
-          value: noreply@seusite.com.br
+          value: noreply@website.com.br
         - name: MAIL_HOST
           value: smtp.office365.com
         - name: MAIL_PORT
           value: '587'
         - name: MAIL_USERNAME
-          value: noreply@seusite.com.br
+          value: noreply@website.com.br
         - name: MAIL_PASSWORD
           value: sua_senha # improve this using an external secret for example
         - name: MAIL_ENCRYPTION
