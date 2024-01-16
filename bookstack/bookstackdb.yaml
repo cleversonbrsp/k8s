@@ -25,13 +25,13 @@ spec:
         - name: PGID
           value: "986"
         - name: MYSQL_ROOT_PASSWORD
-          value: "bookstack"
+          value: "yoursqlpass"
         - name: MYSQL_DATABASE
-          value: "bookstack"
+          value: "yoursqldatabasename"
         - name: MYSQL_USER
-          value: "bookstack"  
+          value: "yoursqlusername"  
         - name: MYSQL_PASSWORD
-          value: "bookstack"
+          value: "yoursqlpass"
         - name: TZ
           value: "America/Sao_Paulo"   
         volumeMounts:
