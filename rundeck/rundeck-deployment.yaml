@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rundeck-deployment
+  namespace: rundeck
+  labels:
+    app: rundeck
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rundeck
+  template:
+    metadata:
+      labels:
+        app: rundeck
+    spec:
+      containers:
+      - name: rundeck-container
+        image: rundeck/rundeck:5.2.0
+        ports:
+        - containerPort: 4440
