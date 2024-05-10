@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bookstack
+  namespace: bookstack
   labels:
     app: bookstack
 spec:
@@ -14,6 +15,8 @@ spec:
       labels:
         app: bookstack
     spec:
+      # nodeSelector:
+      #   name: oke-pool2
       containers:
       - name: bookstack
         image: linuxserver/bookstack
@@ -21,35 +24,67 @@ spec:
         - containerPort: 80
         env:
         - name: APP_URL
-          value: "https://website.com.br" #your website
+          value: "https://yoursite.com.br" # improve this using an external secret for example
         - name: PUID
           value: "1001"
         - name: PGID
           value: "986"
         - name: DB_HOST
-          value: "yourdbhostname"
+          value: "bookstackdb"
         - name: DB_USER
-          value: "yourdbusername"
+          value: "yourdbuser" # improve this using an external secret for example
         - name: DB_PASS
-          value: "yourdbupass"
+          value: "yourdbowd" # improve this using an external secret for example
         - name: DB_DATABASE
-          value: "yourdbdatabasename"
+          value: "youdbname"
+
+        # Setup do Noreply
         - name: MAIL_DRIVER
           value: smtp
         - name: MAIL_FROM_NAME
           value: noreply
         - name: MAIL_FROM
-          value: noreply@website.com.br
+          value: noreply@inventcloud.com.br # improve this using an external secret for example
         - name: MAIL_HOST
           value: smtp.office365.com
         - name: MAIL_PORT
           value: '587'
         - name: MAIL_USERNAME
-          value: noreply@website.com.br
+          value: noreply@inventcloud.com.br
         - name: MAIL_PASSWORD
-          value: sua_senha # improve this using an external secret for example
+          value: U52ECPbc7kUh # improve this using an external secret for example
         - name: MAIL_ENCRYPTION
           value: TLS
+
+        #Azure AD SAML 2.0 Authentication
+        - name: AUTH_METHOD
+          value: saml2
+        - name: AUTH_AUTO_INITIATE
+          value: 'false'
+        - name: SAML2_NAME
+          value: SSO
+        - name: SAML2_EMAIL_ATTRIBUTE
+          value: email
+        - name: SAML2_EXTERNAL_ID_ATTRIBUTE
+          value: uid
+        - name: SAML2_DISPLAY_NAME_ATTRIBUTES
+          value: username
+        - name: SAML2_IDP_ENTITYID
+          value: https://sts.windows.net/yourID/ # improve this using an external secret for example
+        - name: SAML2_AUTOLOAD_METADATA
+          value: 'false'
+        - name: SAML2_IDP_SSO
+          value: https://login.microsoftonline.com/yourID/saml2 # improve this using an external secret for example
+        - name: SAML2_IDP_SLO
+          value: https://login.microsoftonline.com/yourID/saml2 # improve this using an external secret for example
+        - name: SAML2_IDP_x509
+          value: |
+            -----BEGIN CERTIFICATE-----
+            yourkey # improve this using an external secret for example
+            -----END CERTIFICATE-----
+        - name: SAML2_IDP_AUTHNCONTEXT
+          value: 'true'
+        
         volumeMounts:
         - mountPath: "/config"
           name: bokstackvolume
