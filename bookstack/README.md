@@ -6,4 +6,5 @@
 
 Details for BookStack can be found on the official website at https://www.bookstackapp.com/
 
-![bookstack](./imgs/img1.jpg)
+### Vault example
+![externalsecret](./imgs/img2.jpg)
