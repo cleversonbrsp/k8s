@@ -22,6 +22,10 @@ spec:
         image: linuxserver/bookstack
         ports:
         - containerPort: 80
+        # external example
+        # envFrom:
+        # - secretRef:
+        #     name: vault-secrets
         env:
         - name: APP_URL
           value: "https://yoursite.com.br" # improve this using an external secret for example
