@@ -1,0 +1,6 @@
+simulate_workflow.py
+git_cleanup.py
+templates
+__pycache__
+git_automation_script.py
+app.py
